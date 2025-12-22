@@ -1,5 +1,6 @@
 import { View, Text, Image, Animated } from 'react-native';
 import { useRef, useEffect } from 'react';
+import { Score } from './Score';
 
 export const AnimatedCard = ({ index, movie, setAllMovies }) => {
   const opacity = useRef(new Animated.Value(0)).current;
@@ -30,11 +31,12 @@ export const Movie = ({ movie }) => (
     ) : (
       <Text style={{color: 'gray', marginTop: 10}}>Sin imagen</Text>
     )}
-    {movie.rate >= 8 ?
+    {/* {movie.rate >= 8 ?
       <Text style={{color: 'lightgreen'}}>{movie.rate}⭐</Text>
       :
       <Text style={{color: 'lightcoral'}}>{movie.rate}⭐</Text>
-    }
+    } */}
+    <Score rate={movie.rate} />
     {/* Si quieres el botón Back solo una vez, ponlo fuera del map en App.js */}
   </View>
 

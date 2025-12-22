@@ -1,14 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
+import { NativeWindStyleSheet } from 'nativewind';
 import { StyleSheet, Text, View, ScrollView, Image, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { useEffect, useState, useRef } from 'react';
 import { getMovies, getMovieById } from './lib/api-mobies';
 import { AnimatedCard } from './components/Movie';
-
 import { Botton } from './components/Botton';
-import { Movie } from './components/Movie';
 import { Logo } from './components/Logo';
+
+NativeWindStyleSheet.setOutput({
+  default: 'native',
+});
 
 const videoSource = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_DCyH6Q5RzhULl9HVcYCgWGbyJQRF/1kTLdGGjDRrdq6uZzcEoJN/public/new-back.mp4";
 export default function App() {
