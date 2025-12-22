@@ -14,8 +14,7 @@ export const Score = ({ rate }) => {
 
     return (
         <>
-                        <Text style={{color: getColorRate(), fontSize: 18, fontWeight: 'bold'}}>{rate}⭐</Text>
-            
+            <Text style={{color: getColorRate(), fontSize: 18, fontWeight: 'bold'}}>{rate}⭐</Text>  
         </>
     );
 }

@@ -4,21 +4,26 @@ import { StyleSheet, Text, View, ScrollView, Image, ImageBackground } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { useEffect, useState, useRef } from 'react';
-import { getMovies, getMovieById } from './lib/api-mobies';
-import { AnimatedCard } from './components/Movie';
-import { Botton } from './components/Botton';
-import { Logo } from './components/Logo';
+import { getMovies, getMovieById } from '../lib/api-mobies';
+import { AnimatedCard } from '../components/Movie';
+import { Botton } from '../components/Botton';
+import { Logo } from '../components/Logo';
+import { Link, useRouter } from 'expo-router';
+
 
 NativeWindStyleSheet.setOutput({
   default: 'native',
 });
 
-const videoSource = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_DCyH6Q5RzhULl9HVcYCgWGbyJQRF/1kTLdGGjDRrdq6uZzcEoJN/public/new-back.mp4";
+// const videoSource = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_DCyH6Q5RzhULl9HVcYCgWGbyJQRF/1kTLdGGjDRrdq6uZzcEoJN/public/new-back.mp4";
+
 export default function App() {
 
   const [allMovies, setAllMovies] = useState([]);
 
   const scrollViewRef = useRef({ y: 0 });
+
+  const router = useRouter();
 
  const handleGetMovies = async () => {
     try {
@@ -45,17 +50,17 @@ export default function App() {
   //   fetchMovies();
   // }, [allMovies]);
 
-  const player = useVideoPlayer(require('./assets/arena-negra.jpg'), player => {
-    player.loop = true;
-    player.muted = true;
-  });
+  // const player = useVideoPlayer(require('../assets/arena-negra.jpg'), player => {
+  //   player.loop = true;
+  //   player.muted = true;
+  // });
 
-  useEffect(() => {
-    player.play();
-  }, [player]);
+  // useEffect(() => {
+  //   player.play();
+  // }, [player]);
 
   return (
-    <ImageBackground source={require('./assets/arena-negra.jpg')} style={{flex: 1}}>
+    <ImageBackground source={require('../assets/arena-negra.jpg')} style={{flex: 1}}>
       <View style={styles.container}>
         <StatusBar style="dark" />
           <Logo />
@@ -72,7 +77,10 @@ export default function App() {
               <Text style={styles.text}>Positivo Outfit</Text>
               {
                 allMovies.length === 0 && (
-                  <Botton onPress={handleGetMovies}>Get Movies</Botton>
+                  <>
+                    <Botton onPress={handleGetMovies}>Get Movies</Botton>
+                    <Botton onPress={() => router.push('/about')}>Orders</Botton>
+                  </>
                 )
               }
             </View>
@@ -101,7 +109,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundImage: require('./assets/arena-negra.jpg'),
+    backgroundImage: require('../assets/arena-negra.jpg'),
   },
   content: {
     flex: 1,
