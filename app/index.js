@@ -79,7 +79,7 @@ export default function App() {
                 allMovies.length === 0 && (
                   <>
                     <Botton onPress={handleGetMovies}>Get Movies</Botton>
-                    <Botton onPress={() => router.push('/about')}>Orders</Botton>
+                    <Botton onPress={() => router.push('/orders')}>Orders</Botton>
                   </>
                 )
               }
