@@ -56,7 +56,11 @@ export const OrdersView = () => {
                 <View style={{ flex: 2, paddingRight: 10 }}>
                     <Text className="text-white text-base mb-2">{item.customer_name}</Text>
                     <Text className="text-white text-base">Tel: {item.customer_phone}</Text>
-                    <Text className="text-white text-base">Status: {item.status}</Text>
+                    {item.status === 'pending' ?
+                    <Text className="text-white text-base">Status: <Text className="text-yellow-300 text-base font-bold">{item.status}</Text></Text>
+                    :
+                    <Text className="text-white text-base">Status: <Text className="text-green-300 text-base font-bold">{item.status}</Text></Text>
+                    }
                     <Text className="text-white text-base">Entrega: {item.delivery_method}</Text>
                     {item.delivery_method === 'delivery' && (
                       <Text className="text-white text-base">Direccion: {item.delivery_address}</Text>
