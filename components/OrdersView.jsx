@@ -1,5 +1,5 @@
 import { View, Text, Pressable } from "react-native";
-import { FlatList, ImageBackground } from "react-native";
+import { FlatList, ImageBackground, ActivityIndicator} from "react-native";
 import { Botton } from "./Botton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
@@ -47,6 +47,11 @@ export const OrdersView = () => {
                 {/* <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>Pedidos</Text> */}
             </View>
             <View style={{ backgroundColor: 'transparent', width: '90%', marginBottom: 0, marginTop: 80 }} >
+
+                {ordersData.length === 0 && (
+                    <ActivityIndicator size="large" color="#ffffff" className="mb-8" />
+                )}
+
                 <FlatList
                     data={[...ordersData]}
                     keyExtractor={(item) => item.id}

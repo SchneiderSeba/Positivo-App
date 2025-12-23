@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getOrderById, updateOrderStatus } from "../lib/api-orders-positivo";
-import { View, Text, Pressable, FlatList, ImageBackground } from "react-native";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { View, Text, Pressable, FlatList, ImageBackground, ActivityIndicator } from "react-native";
+import { useRouter, useLocalSearchParams, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Botton } from "./Botton";
 import { PopUpStatus } from "./PopUpStatus";
@@ -70,6 +70,16 @@ export const OrderById = ({ id, status }) => {
             <SafeAreaView className="flex-1 bg-transparent items-center justify-center p-4">
                 <BlurView intensity={90} tint="dark" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
                 {/* Sombra externa */}
+                <Stack.Screen
+                        options={{
+                            headerTitle: `${order?.customer_name}` || 'Cargando...',
+                            headerTitleAlign: 'center', // <-- Esto centra el título
+                            headerStyle: { backgroundColor: `${shadowColor}` + `85`},
+                            headerLeft: () => null,
+                            headerRight: () => null,
+                        }}
+                />
+
                 <View
                     style={{
                         shadowColor: shadowColor,
@@ -85,11 +95,13 @@ export const OrderById = ({ id, status }) => {
                         className="p-4 m-2 rounded-2xl w-80 border border-white/30"
                         style={{ minHeight: 150, borderRadius: 24, backgroundColor: '#222' }}
                     >
+                    {order === null && (
+                        <ActivityIndicator size="large" color="#ffffff" className="m-8" />
+                    )}
                     {/* Info del pedido y productos */}
                     {order && (
                         <View className="bg-transparent">
                             {/* Info general del pedido */}
-                            <Text className="text-white text-lg font-bold mb-2">Pedido de: {order.customer_name}</Text>
                             <Text className="text-white text-base mb-1">Tel: {order.customer_phone}</Text>
                             <Text className="text-white text-base mb-1">Entrega: {order.delivery_method}</Text>
                             {order.delivery_method === 'delivery' && (
@@ -106,7 +118,7 @@ export const OrderById = ({ id, status }) => {
                                     </View>
                                 ))
                             ) : (
-                                <Text className="text-white text-base">Sin productos</Text>
+                                <ActivityIndicator size="small" color="#ffffff" className="mb-4" />
                             )}
                             {/* Estado */}
                             {order.status === 'pending' && (
