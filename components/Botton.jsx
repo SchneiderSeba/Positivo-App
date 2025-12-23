@@ -9,7 +9,7 @@ export const Botton = ({ onPress, children }) => {
       onPress={onPress}
       style={
         isBack
-          ? { marginTop: 40, alignSelf: 'center' }
+          ? { marginTop: 20, alignSelf: 'center' }
           : isOrder
             ? { flex: 1, flexDirection: 'row', top: 10, alignContent: 'center', justifyContent: 'center' }
             : { flex: 1, flexDirection: 'row', top: 50, alignContent: 'center', justifyContent: 'center' }

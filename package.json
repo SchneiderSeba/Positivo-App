@@ -16,6 +16,7 @@
     "axios": "^1.13.2",
     "babel-preset-expo": "~54.0.9",
     "expo": "~54.0.30",
+    "expo-blur": "~15.0.8",
     "expo-constants": "~18.0.12",
     "expo-linear-gradient": "~15.0.8",
     "expo-linking": "~8.0.11",
