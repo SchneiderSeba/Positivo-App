@@ -56,12 +56,33 @@ export const OrderById = ({ id, status }) => {
 
     console.log('Order IDs prop:', id);
 
+    // Sombra dinámica según status
+    let shadowColor = '#38bdf8'; // info (azul)
+    if (order?.status === 'completed') shadowColor = '#22c55e'; // verde
+    else if (order?.status === 'pending') shadowColor = '#fbbf24'; // amarillo
+    else if (order?.status === 'error') shadowColor = '#ef4444'; // rojo
+
     return (
         <SafeAreaView className="flex-1 bg-black/80 items-center justify-center p-4">
-            <View className="bg-black/20 p-4 m-2 rounded-2xl w-80 border border-white/30" style={{ minHeight: 150 }}>
+            {/* Sombra externa */}
+            <View
+                style={{
+                    shadowColor: shadowColor,
+                    shadowOpacity: 0.18,
+                    shadowRadius: 16,
+                    elevation: 12,
+                    borderRadius: 24,
+                    marginBottom: 8,
+                    backgroundColor: 'transparent',
+                }}
+            >
+                <View
+                    className="p-4 m-2 rounded-2xl w-80 border border-white/30"
+                    style={{ minHeight: 150, borderRadius: 24, backgroundColor: '#222' }}
+                >
                 {/* Info del pedido y productos */}
                 {order && (
-                    <>
+                    <View className="bg-transparent">
                         {/* Info general del pedido */}
                         <Text className="text-white text-lg font-bold mb-2">Pedido de: {order.customer_name}</Text>
                         <Text className="text-white text-base mb-1">Tel: {order.customer_phone}</Text>
@@ -93,7 +114,7 @@ export const OrderById = ({ id, status }) => {
                                 <Text className="text-green-300 text-base font-bold"> Listo</Text>
                             </Text>
                         )}
-                    </>
+                    </View>
                 )}
                 {/* Separador Horizontal */}
                 <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.3)', width: '80%', marginVertical: 16, alignSelf: 'center' }} />
@@ -127,6 +148,7 @@ export const OrderById = ({ id, status }) => {
                             onClose={handlePopUpClose}
                         />
                     )}
+                </View>
                 </View>
             </View>
             <Botton onPress={() => router.back()} >Back</Botton>
