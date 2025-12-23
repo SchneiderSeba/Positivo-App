@@ -6,6 +6,7 @@ import { useRouter } from "expo-router";
 import { getOrders } from "../lib/api-orders-positivo";
 import { useEffect, useState } from "react";
 import { Supabase } from "../lib/Supa-Client";
+import { Logo } from "./Logo";
 
 
 export const OrdersView = () => {
@@ -35,14 +36,18 @@ export const OrdersView = () => {
         }
     }, []);
 
-    console.log('Orders data fetched:', ordersData);
+    // console.log('Orders data fetched:', ordersData);
 
     const router = useRouter();
 
   return (
     <>
         <SafeAreaView className="flex-1 bg-black/80 items-center justify-center p-4">
-          <Text className="text-white text-lg font-semibold mb-4">Orders View</Text>
+          
+          <Logo className="inline-block w-6 h-6" />
+
+          <Text className="text-white text-lg font-semibold mb-4">Orders View </Text>
+          
           <FlatList
             data={[...ordersData]}
             keyExtractor={(item) => item.id}

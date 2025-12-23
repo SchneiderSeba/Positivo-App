@@ -37,18 +37,6 @@ export default function App() {
       console.error('Failed to fetch movies:', error);
     }
   };
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     try {
-  //       const movies = await getMovies();
-  //       setAllMovies(movies);
-  //       console.log('Fetched movies:', movies);
-  //     } catch (error) {
-  //       console.error('Failed to fetch movies:', error);
-  //     }
-  //   }
-  //   fetchMovies();
-  // }, [allMovies]);
 
   // const player = useVideoPlayer(require('../assets/arena-negra.jpg'), player => {
   //   player.loop = true;

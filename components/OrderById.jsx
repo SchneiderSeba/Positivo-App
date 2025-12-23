@@ -52,7 +52,7 @@ export const OrderById = ({ id, status }) => {
 
     }, [id, status]);
 
-    console.log('Order data fetched by ID:', order);
+    // console.log('Order data fetched by ID:', order);
 
     console.log('Order IDs prop:', id);
 
