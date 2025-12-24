@@ -17,9 +17,9 @@ const sendPushNotification = async (expoPushToken) => {
     const message = {
       to: expoPushToken,
       sound: 'true',
-      title: 'NUEVOOOOOOOO',
-      body: 'NADAAAAAAA!',
-      data: { someData: 'goes here' },  
+      title: 'Positivo Outfit - Nuevo Pedido',
+      body: 'Detalles del Pedido 💵🪙',
+      data: { someData: 'goes here', "url": "/orders" },  
     }
 
     await fetch('http://192.168.1.36:3000/send-notification', {
