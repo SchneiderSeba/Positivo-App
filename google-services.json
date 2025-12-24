@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912526292896",
+    "project_id": "com-schneiderseba-tryapp",
+    "storage_bucket": "com-schneiderseba-tryapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912526292896:android:731ca280c5343fc2ac96c5",
+        "android_client_info": {
+          "package_name": "com.schneiderseba.tryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABAWA431wmBbW5xRRvwILbsi9TolL0a_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

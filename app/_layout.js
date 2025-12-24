@@ -9,7 +9,8 @@ export default function Layout() {
                                     headerTitle: '',
                                     headerTransparent: true,
                                     headerLeft: () => <><Logo /><Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16 }}>Positivo Outfit</Text></>,
-                                    headerRight: () => <InfoIcon size={24} color="white" />
+                                    headerRight: () => <InfoIcon size={24} color="white" />,
+                                    animation: "slide_from_right",
                                   }}/>
 
   )

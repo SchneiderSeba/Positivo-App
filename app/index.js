@@ -1,34 +1,88 @@
 import { StatusBar } from 'expo-status-bar';
 import { NativeWindStyleSheet } from 'nativewind';
-import { StyleSheet, Text, View, ScrollView, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Botton } from '../components/Botton';
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
+import { usePushNotifications } from '../lib/usePushNotification';
+import { Button } from 'react-native';
 
 
 NativeWindStyleSheet.setOutput({
   default: 'native',
 });
 
-export default function App() {
 
+const sendPushNotification = async (expoPushToken) => {
+    const message = {
+      to: expoPushToken,
+      sound: 'true',
+      title: 'NUEVOOOOOOOO',
+      body: 'NADAAAAAAA!',
+      data: { someData: 'goes here' },  
+    }
+
+    await fetch('http://192.168.1.36:3000/send-notification', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Accept-encoding': 'gzip, deflate',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    })
+  };
+
+export default function App() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { expoPushToken, notification } = usePushNotifications();
 
   return (
     <ImageBackground source={require('../assets/arena-negra.jpg')} style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent', paddingTop: insets.top * 2 }}>
-        <View style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingTop: 64,
-        }}>
-          <StatusBar style="dark" />
-          <Text style={styles.text}>Hola Davi</Text>
-          <Text style={{ fontFamily: 'Arial', color: '#fff' }}>Bienvenido a Positivo Outfit</Text>
-          <View style={{ marginTop: 20, marginBottom: 20 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent', paddingTop: insets.top }}>
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+          {/* Botón Orders centrado y compacto */}
+          <View style={{ flexGrow: 0, alignItems: 'center', marginTop: 64, marginBottom: 32, height: '300' }}>
             <Botton onPress={() => router.push('/orders')}>Orders</Botton>
+          </View>
+
+          {/* Notificaciones abajo, tamaño fijo */}
+          <View style={{
+            marginHorizontal: 16,
+            marginBottom: 24,
+            borderWidth: 1,
+            borderColor: 'rgba(255,255,255,0.5)',
+            borderRadius: 28,
+            paddingVertical: 18,
+            paddingHorizontal: 16,
+            backgroundColor: 'rgba(0,0,0,0.15)',
+            alignItems: 'center',
+            minHeight: 120,
+            maxHeight: 180,
+            justifyContent: 'center',
+          }}>
+            {/* Renderiza toda la lógica de notificaciones aquí */}
+            <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>Notificaciones Push</Text>
+            <Text style={{ color: '#fff', fontSize: 12, marginBottom: 8 }}>
+              Your Expo push token: {expoPushToken || 'No token'}
+            </Text>
+            <View style={{ marginBottom: 8 }}>
+              <Text style={{ color: '#fff', fontSize: 12 }}>
+                Title: {notification?.request?.content?.title || ''}
+              </Text>
+              <Text style={{ color: '#fff', fontSize: 12 }}>
+                Body: {notification?.request?.content?.body || ''}
+              </Text>
+              <Text style={{ color: '#fff', fontSize: 12 }}>
+                Data: {notification ? JSON.stringify(notification.request.content.data) : ''}
+              </Text>
+            </View>
+            <Button
+              title="Press to Send Notification"
+              onPress={() => sendPushNotification(expoPushToken)}
+              color="#FFD600"
+            />
           </View>
         </View>
       </SafeAreaView>

@@ -4,12 +4,12 @@
     "slug": "try-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Logo-Transp.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "scheme": "tryapp",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/Logo-Transp.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,16 +18,26 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Logo-Transp.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.schneiderseba.tryapp",
+      "permissions": ["NOTIFICATIONS"],
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
-    ]
+      "expo-router",
+      "expo-notifications"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "07251189-9eeb-4064-bc1a-386d022fad61"
+      }
+    }
   }
 }
