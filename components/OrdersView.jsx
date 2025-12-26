@@ -8,6 +8,7 @@ import { useEffect, useState, useRef } from "react";
 import { Supabase } from "../lib/Supa-Client";
 import { usePushNotifications } from "../lib/usePushNotification";
 import { StatusBar } from "expo-status-bar";
+import { QuickOrderView, QuickOrderViewSmall } from "./QuickOrderView";
 
 
 export const OrdersView = () => {
@@ -15,7 +16,12 @@ export const OrdersView = () => {
     const [ordersData, setOrdersData] = useState([]);
     const previousOrdersLength = useRef(0);
     const { expoPushToken } = usePushNotifications();
+    const [openOrders, setOpenOrders] = useState({});
     const [show, setShow] = useState(false);
+
+    const handleShow = () => {
+        setShow(!show);
+    };
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -41,10 +47,13 @@ export const OrdersView = () => {
     }, []);
 
     console.log('Previous orders:', previousOrdersLength);
-
-    const handleShow = () => {  
-        setShow(!show);
-    }
+    
+    const handleToggle = (id) => {
+        setOpenOrders(prev => ({
+            ...prev,
+            [id]: !prev[id]
+        }));
+    };
 
     const router = useRouter();
 
@@ -67,42 +76,12 @@ export const OrdersView = () => {
                     keyExtractor={(item) => item.id}
                     contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}
                     renderItem={({ item }) => (
-                        show && (
-                        <View
-                            className="flex-row bg-black/20 p-4 m-2 rounded-2xl w-80 border border-white/30"
-                            style={{ minHeight: 150, alignItems: 'center' }}
-                        >
+                        openOrders[item.id]
 
-                            {/* Columna izquierda: textos */}
-                            <View style={{ flex: 2, paddingRight: 10 }}>
-                                <Text className="text-white text-base mb-2">{item.customer_name}</Text>
-                                <Text className="text-white text-base">Tel: {item.customer_phone}</Text>
-                                {item.status === 'pending' ?
-                                <Text className="text-white text-base">Status: <Text className="text-yellow-300 text-base font-bold">{item.status}</Text></Text>
-                                :
-                                <Text className="text-white text-base">Status: <Text className="text-green-300 text-base font-bold">{item.status}</Text></Text>
-                                }
-                                <Text className="text-white text-base">Entrega: {item.delivery_method}</Text>
-                            </View>
-                            {/* Separador vertical */}
-                            <View style={{ width: 1, backgroundColor: 'rgba(255,255,255,0.3)', height: '80%', marginHorizontal: 8 }} />
-                            {/* Columna derecha: botones */}
-                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', paddingHorizontal: 4 }}>
-                            <Pressable
-                                onPress={() => router.push({ pathname: `/orderById/${item.id}`, params: { status: item.status } })}
-                                style={{ width: '100%', marginVertical: 6, alignSelf: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.1)', padding: 6, borderRadius: 6 }}
-                            >
-                                <Text className="text-white text-center font-semibold">View</Text>
-                            </Pressable>
-                            <Pressable
-                                onPress={() => router.push('/')}
-                                style={{ width: '100%', marginVertical: 6, alignSelf: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.1)', padding: 6, borderRadius: 6 }}
-                            >
-                                <Text className="text-white text-center font-semibold">Reorder</Text>
-                            </Pressable>
-                            </View>
-                        </View>
-                        )
+                        ?
+                            <QuickOrderView item={item} handleShow={() => handleToggle(item.id)} show={openOrders[item.id]} /> 
+                        :
+                            <QuickOrderViewSmall item={item} handleShow={() => handleToggle(item.id)} show={openOrders[item.id]} />
                     )}
 
                 />
