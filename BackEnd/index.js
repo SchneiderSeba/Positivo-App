@@ -1,14 +1,19 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { sendPushNotification } from './sendNotification.js';
+import { listenOrdersAndNotify } from './sendNotificationFromBack.js';
+import { homePage } from './homePage.js';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
+
+listenOrdersAndNotify();
+
 app.get('/', (req, res) => {
-  res.send('Hello, wwwwwwwwwWorld!');
+  res.send(homePage());
 });
 
 app.post('/send-notification', async (req, res) => {
