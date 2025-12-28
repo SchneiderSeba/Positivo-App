@@ -10,9 +10,7 @@
 **Try App** is an app designed to connect with your Sales Website and allow you to view your Pending Orders and receive Push Notifications on your mobile about new orders.
 
 ---
-**You Can Check it Out in this Link** :  
-[Railway - Positivo App Production](https://positivo-app-production.up.railway.app)  
-Alt text: Railway logo featuring a stylized train engine in blue and white, conveying a sense of speed and reliability. The logo is set against a clean background, evoking a professional and modern environment. The image includes the text Railway, which is clearly visible and reinforces the brand identity. The overall tone is energetic and trustworthy.
+**You Can Check it Out in this Link** :  [Try App Landing BackEnd](https://positivo-app-production.up.railway.app)  
 
 ---
 
