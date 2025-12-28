@@ -1,4 +1,5 @@
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { Link } from 'expo-router';
 
 export const InfoIcon = ({ size = 24, color = 'white' }) => (
@@ -15,4 +16,9 @@ export const DownIcon = ({ size = 24, color = 'white' }) => (
 export const UpIcon = ({ size = 24, color = 'white' }) => (
     
         <FontAwesome5 name="angle-up" size={size} color={color} />
+);
+
+export const CheckIcon = ({ size = 24, color = 'white' }) => (
+    
+        <FontAwesome6 name="check" size={size} color={color} />
 );

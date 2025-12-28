@@ -35,6 +35,8 @@
     ],
     "extra": {
       "router": {},
+      "ADMIN_EMAIL": "admin@ejemplo.com",
+      "ADMIN_PASSWORD": "123456",    
       "eas": {
         "projectId": "07251189-9eeb-4064-bc1a-386d022fad61"
       }

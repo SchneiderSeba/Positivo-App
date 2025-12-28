@@ -1,13 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { NativeWindStyleSheet } from 'nativewind';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Text, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Botton } from '../components/Botton';
 import { useRouter } from 'expo-router';
-import { usePushNotifications } from '../lib/usePushNotification';
-import { Button } from 'react-native';
-import { sendPushNotification } from '../lib/sendPushnotification';
 import { OrdersView } from '../components/OrdersView';
+import { LogIn } from '../components/LogIn';
+import { useState } from 'react';
 
 
 NativeWindStyleSheet.setOutput({
@@ -18,10 +16,13 @@ NativeWindStyleSheet.setOutput({
 export default function App() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { expoPushToken, notification } = usePushNotifications();
+
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
-    <OrdersView />
+    isAuth 
+      ? <OrdersView />
+      : <LogIn />
   );
 }
 //     <ImageBackground source={require('../assets/arena-negra.jpg')} style={{ flex: 1 }}>
