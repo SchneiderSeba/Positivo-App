@@ -2,3 +2,9 @@
 # Log In
 
 # Deploy
+
+# Add a UI library : MagnusUI, React Native Paper, Tamagui
+# add State Manage Library : ContextAPI
+# Storageing : MMKV
+
+# Charts : React Native Charts Wrapper
