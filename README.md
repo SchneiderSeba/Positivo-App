@@ -5,55 +5,55 @@
 
 ---
 
-## ✨ Descripción
+## ✨ Description
 
-**Try App** es una aplicación móvil desarrollada en **React Native** que te permite experimentar y aprender sobre el desarrollo móvil de manera sencilla y divertida. Perfecta para quienes quieren iniciarse en el mundo del desarrollo móvil o probar nuevas ideas rápidamente.
+**Try App** is an app designed to connect with your Sales Website and allow you to view your Pending Orders and receive Push Notifications on your mobile about new orders.
 
 ---
 
-## 🖼️ Capturas de Pantalla
+## 🖼️ Screenshots
 
 <p align="center">
-    <img src="./assets/image1.jpeg" alt="Pantalla 1" width="200"/>
-    <img src="./assets/image2.jpeg" alt="Pantalla 2" width="200"/>
-    <img src="./assets/image3.jpeg" alt="Pantalla 3" width="200"/>
+    <img src="./assets/image1.jpeg" alt="Screen 1" width="200"/>
+    <img src="./assets/image2.jpeg" alt="Screen 2" width="200"/>
+    <img src="./assets/image3.jpeg" alt="Screen 3" width="200"/>
 </p>
 
 ---
 
-## ⚡ Características
+## ⚡ Features
 
-- 📱 Interfaz moderna y amigable
-- 🚀 Rápido y ligero
-- 🛠️ Fácil de personalizar y expandir
-- 🌙 Soporte para modo oscuro
-- 🔥 Compatible con Android y iOS
+- 📱 Modern and user-friendly interface
+- 🚀 Fast and lightweight
+- 🛠️ Easy to customize and expand
+- 🌙 Dark mode support
+- 🔥 Compatible with Android and iOS
 
 ---
 
-## 🛠️ Instalación
+## 🛠️ Installation
 
 ```bash
 git clone https://github.com/seba100/try-app.git
 cd try-app
 npm install
-npx expo start --dev-client # o run-ios
+npx expo start --dev-client # or run-ios
 ```
 
 ---
 
-## 🤝 Contribuciones
+## 🤝 Contributions
 
-¡Las contribuciones son bienvenidas! Por favor, abre un issue o un pull request para mejorar la app.
+Contributions are welcome! Please open an issue or a pull request to improve the app.
 
 ---
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la licencia MIT.
+This project is under the MIT license.
 
 ---
 
 <p align="center">
-    Hecho por Sebastian Schneider
+    Made by Sebastian Schneider
 </p>
