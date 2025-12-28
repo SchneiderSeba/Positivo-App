@@ -9,7 +9,7 @@
 
 **Try App** is an app designed to connect with your Sales Website and allow you to view your Pending Orders and receive Push Notifications on your mobile about new orders.
 
-**You Can Check it Out in this Link** : ![Landing Back End Page](positivo-app-production.up.railway.app)
+**You Can Check it Out in this Link** : ![Railway](positivo-app-production.up.railway.app)
 
 ---
 
